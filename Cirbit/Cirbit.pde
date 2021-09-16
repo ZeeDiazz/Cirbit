@@ -1,11 +1,11 @@
 Game game = new Game();
 
-void setup (){
-  size(1600, 800);
+void setup(){
+  size(1600,800);
   game.setup();
 }
 
-void draw() {
+void draw(){
   clear();
   game.draw();
 }

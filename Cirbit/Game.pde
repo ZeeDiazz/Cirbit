@@ -1,10 +1,14 @@
 class Game{
-  Wind wind = new Wind(random(10,15),10,height/2);
+  ArrayList<Wall> wallList = new ArrayList<Wall>();
   
   void setup(){
+    wallList.add(new Wall(800,300,820,350,800,430,700,400));
   }
-   
+  
   void draw(){
-      wind.run();
+    for(Wall w : wallList){
+      w.update();
+      w.display();
+    }
   }
 }
