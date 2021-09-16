@@ -1,13 +1,14 @@
 class Game{
-  ArrayList<Electricity> EList = new ArrayList<Electricity>();
+  ArrayList<Wall> wallList = new ArrayList<Wall>();
+  
   void setup(){
-    EList.add(new Electricity(1200,700, 450,399));
+    wallList.add(new Wall(800,300,820,350,800,430,700,400));
   }
   
   void draw(){
-    for(Electricity e : EList){
-      e.display();
-      e.update();
+    for(Wall w : wallList){
+      w.update();
+      w.display();
     }
   }
 }
