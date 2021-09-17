@@ -1,11 +1,20 @@
 Menu menu = new Menu();
-Shop shop = new Shop();
+Table data;
 ArrayList<Button> buttons = new ArrayList<Button>();
 
 void setup(){
   size(1600,800);
-  menu.setup();
-  
+  menu.setup();  
+  data = loadTable("data/data.csv", "header");
+  //csv
+  float numb = 1;
+  for(TableRow row : data.rows()){
+    println("numb: " + numb);
+    numb++;
+    int r = row.getInt("levelcompleted");
+    println("r: " + r);
+    
+  }
 }
 
 void draw(){
