@@ -20,13 +20,6 @@ class Wall extends Obstacle {
   }
 
   void display() {
-
-    noStroke();
-    if (!killZone()) {
-      fill(200, 0, 0);
-    } else {
-      fill(255);
-    }
     beginShape();
     vertex(ax, ay);
     vertex(bx, by);
@@ -36,6 +29,13 @@ class Wall extends Obstacle {
   }
 
   boolean killZone() {
+
+    noStroke();
+    if (!killZone()) {
+      fill(200, 0, 0);
+    } else {
+      fill(255);
+    }
     float areaPoint = 0;
     for (int i = 0; i<=3; i++) {
       areaPoint += calculateArea(i);
@@ -44,6 +44,7 @@ class Wall extends Obstacle {
     // https://www.mathopenref.com/coordpolygonarea.html
     float areaShape = abs( (ax*by - bx*ay) + (bx*cy - cx*by) + (cx*dy - dx*cy) + (dx*ay - ax*dy)) /2;
     if (areaPoint > areaShape) {
+      game.ball.reset();
       return true;
     }
 

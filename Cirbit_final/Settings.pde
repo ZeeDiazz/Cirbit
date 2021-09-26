@@ -1,5 +1,6 @@
 class Settings {
   ArrayList<Button> buttonList = new ArrayList<Button>();
+  Button button = new Button(200, 100, 100, 70, 20, "Home", 50, 35, true, 0, 1);
   Settings() {
   }
   void setup() {
@@ -9,6 +10,7 @@ class Settings {
     buttonList.add(new Button(650, 400, 300, 50, 20, "Reset Progress", 150, 25, true, 0, 4));
   }
   void update() {
+    button.update();
     for (Button b : buttonList) {
       b.update();
     }
@@ -25,6 +27,7 @@ class Settings {
     }
   }
   void display() {
+    button.display();
     for (Button b : buttonList) {
       b.display();
     }
@@ -49,6 +52,12 @@ class Settings {
       if (b.checkMouse()) {
         menu.showTab = b.leadingToTab;
       }
+    }
+    if (buttonList.get(2).checkMouse()) {
+      saveTable(dataOriginal, "data/data.csv");
+    }
+    if (button.checkMouse()) {
+      menu.showTab = 1;
     }
   }
 }

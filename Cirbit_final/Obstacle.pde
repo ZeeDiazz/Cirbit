@@ -1,6 +1,4 @@
 class Obstacle {
-
-
   Obstacle() {
   }
   //The area where the player dies

@@ -1,6 +1,7 @@
 Game game = new Game();
 Menu menu = new Menu();
 Table data;
+Table dataOriginal;
 
 Boolean InMenu = true;
 
@@ -12,7 +13,7 @@ void setup() {
   menu.setup();  
 
   data = loadTable("data/data.csv", "header");
-  testing();
+  dataOriginal = loadTable("data/dataOriginal.csv", "header");
 }
 
 void draw() {
@@ -49,36 +50,5 @@ void mouseReleased() {
 
 void mouseWheel(MouseEvent event) {
   menu.shop.mouseWheel(event);
-}
-
-void testing() {
-
-  for (int i = 0; i<= 9; i++) {
-    println("Level " + i);
-
-    int r = data.getInt(i,0);
-
-    if (r == 1) {
-      println(" has been completed");
-    }
-    if (r == 0) {
-      println(" has not been completed");
-    }
-  }
-  println();
-  println("SKINS UNLOCKED");
-  for (int i = 0; i<= 5; i++) {
-    println("Skin " + i);
-    int r = data.getInt(i, 1);
-    if (r == 1) {
-      println(" has been unlocked");
-    }
-    if (r == 0) {
-      println(" has not been unlocked");
-    }
-  }
-  println();
-  println("CASH MONEY");
-  int r = data.getInt(0, 2);
-  println("cashmoney: " + r );
+  menu.howToPlay.mouseWheel(event);
 }

@@ -2,6 +2,7 @@ class LevelSelection {
   ArrayList<Button> buttonList = new ArrayList<Button>();
   LevelSelection() {
   }
+  Button button = new Button(200, 100, 100, 70, 20, "Home", 50, 35, true, 0, 1);
   void setup() {
     //float _x, float _y, float _w, float _h, float _textSize, String _text, float _textX, float _textY, boolean _rectTrue, float _round, int _leadingToTab
     buttonList.add(new Button(600, 300, 50, 50, 20, "1", 25, 25, true, 0, 0));
@@ -16,6 +17,7 @@ class LevelSelection {
     buttonList.add(new Button(1000, 400, 50, 50, 20, "10", 25, 25, true, 0, 0));
   }
   void update() {
+    button.update();
     for (Button b : buttonList) {
       b.update();
     }
@@ -32,6 +34,7 @@ class LevelSelection {
     }
   }
   void display() {
+    button.display();
     int i = 0;
     for (Button b : buttonList) {
       if (data.getInt(i, 0) == 1) {
@@ -69,6 +72,9 @@ class LevelSelection {
         }
       }
       i++;
+    }
+    if (button.checkMouse()) {
+      menu.showTab = 1;
     }
   }
 }

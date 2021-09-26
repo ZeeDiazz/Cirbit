@@ -1,5 +1,5 @@
 class BallAndRope {
-
+PImage ball1 = loadImage("Ball1.png");
   PVector origin;
   PVector location;
   PVector gravity = new PVector(0, 0.4);
@@ -56,6 +56,12 @@ class BallAndRope {
     }
     takeOff();
   }
+  void reset(){
+    ballVelocity.mult(0);
+    ballAcceleration.mult(0);
+    connected = true;
+    ropeLength = 535;
+  }
 
   void display() {
     strokeWeight(1);
@@ -69,8 +75,7 @@ class BallAndRope {
     if (boosting) {
       stroke(0, 0, 255);
     }
-    fill(255, 127, 80);
-    circle(location.x, location.y, 24);
+    image(ball1, location.x, location.y, 35, 35);
 
     push();
     strokeWeight(2);

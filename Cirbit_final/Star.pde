@@ -1,5 +1,5 @@
 class Star {
-  boolean collected;
+  boolean collected = false;
 
   float x, y;
   Star(float _x, float _y) {
@@ -8,9 +8,10 @@ class Star {
   }
 
   void update() {
-    if (dist(game.ball.location.x, game.ball.location.y, x, y) < 30/2) {
+    if (dist(game.ball.location.x, game.ball.location.y, x, y) < 30) {
       collected = true;
     }
+    game.star();
   }
 
   void display() {

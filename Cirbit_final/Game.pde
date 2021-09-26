@@ -4,6 +4,7 @@ class Game {
   ArrayList<ArrayList<Coin>> coinList = new ArrayList<ArrayList<Coin>>();
   ArrayList<Star> starList = new ArrayList<Star>();
   int currentLevel = 1;
+  Button button = new Button(200, 100, 100, 70, 20, "Home", 50, 35, true, 0, 1);
 
   void setup() {
     ball = new BallAndRope(new PVector (width/2, 200), 535, new PVector(width/2, 115) );
@@ -57,49 +58,29 @@ class Game {
 
   void draw() {
     clear();
+    button.display();
+    button.display();
+    if (mousePressed && button.checkMouse()) {
+      menu.showTab = 1;
+      InMenu = true;
+    }
     forLevels(currentLevel);
     ball.display();
     ball.update();
-    star();
   }
 
   void star() {
-    switch(currentLevel) {
-    case 1:
-      if(starList.get(currentLevel).collected){
-        InMenu = true;
+    if (starList.get(currentLevel).collected) {
+      starList.get(currentLevel).collected = false;
+      InMenu = true;
+      if (currentLevel <10) {
+        data.setInt(currentLevel, 0, 1);
+
         menu.showTab = 5;
-        currentLevel++;
-        //data.getInt(i, 1);
       }
-      break;
-    case 2:
-
-      break;
-    case 3:
-
-      break;
-    case 4:
-
-      break;
-    case 5:
-
-      break;
-    case 6:
-
-      break;
-    case 7:
-
-      break;
-    case 8:
-
-      break;
-    case 9:
-
-      break;
-    case 10:
-
-      break;
+      currentLevel++;
+      saveTable(data, "data/data.csv");
+      reset();
     }
   }
 
@@ -116,5 +97,9 @@ class Game {
       s.update();
       s.display();
     }
+  }
+
+  void reset() {
+    ball.reset();
   }
 }
