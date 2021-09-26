@@ -10,6 +10,17 @@ class HowToPlay {
   }
   void update() {
     println("HERE");
+    boolean changeCursor = false;
+    for (Button b : buttonList) {
+      if (b.checkMouse()) {
+        changeCursor = true;
+      }
+    }
+    if (changeCursor) {
+      cursor(HAND);
+    } else {
+      cursor(ARROW);
+    }
   }
   void mousePressed() {
   }

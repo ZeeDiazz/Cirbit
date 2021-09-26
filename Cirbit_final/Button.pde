@@ -9,6 +9,8 @@ class Button {
   float textX, textY;
   float round;
   int leadingToTab = 0;
+
+  color c = 255;
   Button(float _x, float _y, float _w, float _h, float _textSize, String _text, float _textX, float _textY, boolean _rectTrue, float _round, int _leadingToTab) {
     x = _x;
     y = _y;
@@ -28,25 +30,22 @@ class Button {
 
   void display() {
     if (rectTrue) {
+      fill(c);
       if (isPressed) {
-        fill(255);
         strokeWeight(3);
         rect(x, y, w, h, round);
       }
       if (isReleased) {
-        fill(255);
         strokeWeight(1);
         rect(x, y, w, h, round);
       }
     }
     if (!rectTrue) {
       if (isPressed) {
-        fill(255);
         strokeWeight(3);
         ellipse(x, y, w, h);
       }
       if (isReleased) {
-        fill(255);
         strokeWeight(1);
         ellipse(x, y, w, h);
       }

@@ -3,17 +3,28 @@ class Shop {
   float textY = 100;
   ArrayList<Button> buttonList = new ArrayList<Button>();
   void setup() {
-    buttonList.add(new Button(width/2-200, 200+250*0, 400, 200, 18, "Default ball", 320, 180, true, 7,0));
-    buttonList.add(new Button(width/2-200, 200+250*1, 400, 200, 18, "Yellow ball", 320, 180, true, 7,0));  //x,y,w,h,textsize,"text",textX,textY
-    buttonList.add(new Button(width/2-200, 200+250*2, 400, 200, 18, "Green/Blue ball", 320, 180, true, 7,0));  
-    buttonList.add(new Button(width/2-200, 200+250*3, 400, 200, 18, "Flame ball", 320, 180, true, 7,0));  
-    buttonList.add(new Button(width/2-200, 200+250*4, 400, 200, 18, "Rainbow Ball", 320, 180, true, 7,0));
-    buttonList.add(new Button(width/2-200, 200+250*5, 400, 200, 18, "Dr Phil M&M", 320, 180, true, 7,0));
+    buttonList.add(new Button(width/2-200, 200+250*0, 400, 200, 18, "Default ball", 320, 180, true, 7, 0));
+    buttonList.add(new Button(width/2-200, 200+250*1, 400, 200, 18, "Yellow ball", 320, 180, true, 7, 0));  //x,y,w,h,textsize,"text",textX,textY
+    buttonList.add(new Button(width/2-200, 200+250*2, 400, 200, 18, "Green/Blue ball", 320, 180, true, 7, 0));  
+    buttonList.add(new Button(width/2-200, 200+250*3, 400, 200, 18, "Flame ball", 320, 180, true, 7, 0));  
+    buttonList.add(new Button(width/2-200, 200+250*4, 400, 200, 18, "Rainbow Ball", 320, 180, true, 7, 0));
+    buttonList.add(new Button(width/2-200, 200+250*5, 400, 200, 18, "Dr Phil M&M", 320, 180, true, 7, 0));
   }
 
   void update() {
     for (Button b : buttonList) {
       b.y = b.y+scroll;
+    }
+    boolean changeCursor = false;
+    for (Button b : buttonList) {
+      if (b.checkMouse()) {
+        changeCursor = true;
+      }
+    }
+    if (changeCursor) {
+      cursor(HAND);
+    } else {
+      cursor(ARROW);
     }
   }
 

@@ -54,11 +54,6 @@ class BallAndRope {
       disconnected();
       calculateAngle();
     }
-
-    textSize(32);
-    text("angle: " +  degrees(angle) + "°", 20, 40);
-    text("angledAcceleration: " + angledAcceleration, 20, 80);
-    text("angledVelocity: " + angledVelocity, 20, 120);
     takeOff();
   }
 
@@ -102,10 +97,10 @@ class BallAndRope {
     applyForce(ballGravity);
 
     if (fallingRight) {
-      ballAcceleration.x+=0.09;
+      ballAcceleration.x+=0.1;
     }
     if (fallingLeft) {
-      ballAcceleration.x-=0.09;
+      ballAcceleration.x-=0.1;
     }
   }
 
@@ -161,6 +156,9 @@ class BallAndRope {
   }
 
   void keyPressed() {
+    if(key == 'p'){
+      println(location.x,location.y);
+    }
     if (connected) {
       if (key == 'd') {
         movingRight = true;
@@ -168,7 +166,7 @@ class BallAndRope {
       if (key == 'a') {
         movingLeft = true;
       }
-      if (key == ' ') {
+      if (key == CODED && keyCode == SHIFT) {
         boosting = true;
       }
     }
@@ -180,7 +178,7 @@ class BallAndRope {
         fallingLeft=true;
       }
     }
-    if (key =='f') {
+    if (key ==' ') {
       connected = !connected;
       reconnect();
     }
@@ -194,7 +192,7 @@ class BallAndRope {
       if (key == 'a') {
         movingLeft = false;
       }
-      if (key == ' ') {
+      if (key == CODED && keyCode == SHIFT) {
         boosting = false;
       }
     }

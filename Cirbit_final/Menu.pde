@@ -1,5 +1,5 @@
 class Menu {
-  //Tab 1=Frontpage, Tab 2=HowToPlay, Tab 3=Shop, Tab 4=Settings, Tab 5=LevelSelection
+  //Tab 0=Game, Tab 1=Frontpage, Tab 2=HowToPlay, Tab 3=Shop, Tab 4=Settings, Tab 5=LevelSelection
   int showTab = 1;
 
   FrontPage frontPage = new FrontPage();

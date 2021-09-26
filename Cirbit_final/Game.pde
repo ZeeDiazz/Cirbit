@@ -1,14 +1,20 @@
 class Game {  
   BallAndRope ball;
   ArrayList<ArrayList<Wall>> wallList = new ArrayList<ArrayList<Wall>>();
-
-  int currentLevel = 2;
-
+  ArrayList<ArrayList<Coin>> coinList = new ArrayList<ArrayList<Coin>>();
+  ArrayList<Star> starList = new ArrayList<Star>();
+  int currentLevel = 1;
 
   void setup() {
     ball = new BallAndRope(new PVector (width/2, 200), 535, new PVector(width/2, 115) );
     for (int i = 1; i<=10; i++) {
       wallList.add(new ArrayList<Wall>());
+    }
+    for (int i = 1; i<=10; i++) {
+      coinList.add(new ArrayList<Coin>());
+    }
+    for(int i = 1; i<=10; i++){
+      starList.add(new Star(650,690));
     }
 
     for (int i = 1; i<=10; i++) {
@@ -16,6 +22,7 @@ class Game {
       case 1:
         wallList.get(i).add(new Wall(700, height, 700, 530, 735, 530, 735, height));
         wallList.get(i).add(new Wall(700, 0, 700, 290, 735, 290, 735, 0));
+        coinList.get(i).add(new Coin(1270,370));
         break;
       case 2:
         wallList.get(i).add(new Wall(750, 270, 750, 250, 425, 250, 425, 270));
@@ -50,8 +57,16 @@ class Game {
 
   void forLevels(int i) {
     for (Wall w : wallList.get(i)) {
-      w.display();
       w.update();
+      w.display();
+    }
+    for(Coin c : coinList.get(i)){
+      c.update();
+      c.display();
+    }
+    for(Star s : starList){
+      s.update();
+      s.display();   
     }
   }
 }
