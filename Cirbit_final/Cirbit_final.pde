@@ -12,7 +12,6 @@ void setup() {
   menu.setup();  
 
   data = loadTable("data/data.csv", "header");
-
   testing();
 }
 
